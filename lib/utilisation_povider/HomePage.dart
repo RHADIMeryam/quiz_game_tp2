@@ -1,39 +1,44 @@
 import 'package:flutter/material.dart';
-import 'StartQuiz.dart';
+import 'package:provider/provider.dart';
+import 'package:quiz_game/utilisation_povider/view/StartQuiz.dart';
+import 'data/dataQuestions.dart';
+import 'provider/QuizProvider.dart';
 
-//point d'entrée
 void main() {
   runApp(const MyApp());
 }
 
-// Le widget racine de notre application
 class MyApp extends StatelessWidget {
   const MyApp({Key? key}) : super(key: key);
 
-  // This widget is the root of your application.
   @override
   Widget build(BuildContext context) {
-    return MaterialApp(
-      title: 'Quiz',
-      theme: ThemeData(
-        primarySwatch: Colors.purple,
+    return MultiProvider(
+      providers: [
+        ChangeNotifierProvider(
+            create: (context) => QuizProvider(0, 0, getListeQuestions()))
+      ],
+      child: MaterialApp(
+        title: 'Quiz',
+        theme: ThemeData(
+          primarySwatch: Colors.purple,
+        ),
+        home: const QuizzPage(title: 'Quiz'),
       ),
-      home: const QuizzPage(title: 'Quiz'),
     );
   }
 }
 
 class QuizzPage extends StatelessWidget {
-  const QuizzPage({super.key, required this.title});
-
   final String title;
 
-  // l'état du widget est créé à partir de la classe le réifiant
+  const QuizzPage({super.key, required this.title});
+
   @override
   Widget build(BuildContext context) {
     return Scaffold(
       appBar: AppBar(
-        title: Text(title),
+        title: Text("Quiz"),
       ),
       body: Container(
         alignment: Alignment.center,

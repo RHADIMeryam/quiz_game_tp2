@@ -1,5 +1,5 @@
 import 'package:flutter/material.dart';
-import 'HomePage.dart';
+import 'package:quiz_game/quiz/HomePage.dart';
 
 class Score extends StatelessWidget {
   int score;

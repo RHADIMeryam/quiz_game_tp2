@@ -1,5 +1,6 @@
 
-import 'QuestionModel.dart';
+
+import 'package:quiz_game/quiz/QuestionModel.dart';
 
 List<QuestionModel> getListeQuestions() {
   List<QuestionModel> listeQuestions = [
